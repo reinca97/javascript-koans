@@ -7,7 +7,7 @@ describe("Functions", function() {
       return a + b;
     }
 
-    expect(add(1, 2)).toBe(FILL_ME_IN);
+    expect(add(1, 2)).toBe(3);
   });
 
   it("function 내부의 variable은 외부의 variable을 덮어씌운다는 것을 아셔야 합니다.", function () {
@@ -22,9 +22,9 @@ describe("Functions", function() {
       return message;
     }
 
-    expect(getMessage()).toBe(FILL_ME_IN);
-    expect(overrideMessage()).toBe(FILL_ME_IN);
-    expect(message).toBe(FILL_ME_IN);
+    expect(getMessage()).toBe("Outer");
+    expect(overrideMessage()).toBe("Inner");
+    expect(message).toBe("Outer");
   });
 
   it("Scope에 대한 퀴즈입니다.", function () {
@@ -41,7 +41,7 @@ describe("Functions", function() {
     }
 
     // parentfunction을 실행시키면 뭐가 나올까요?
-    expect(parentfunction()).toBe(FILL_ME_IN);
+    expect(parentfunction()).toBe("local");
   });
 
   it("함수 인자 이해하기", function () {
@@ -50,23 +50,22 @@ describe("Functions", function() {
       return firstArg;
     }
 
-    expect(returnFirstArg("first", "second", "third")).toBe(FILL_ME_IN);
+    expect(returnFirstArg("first", "second", "third")).toBe("first", "second", "third");
 
     function returnSecondArg(firstArg, secondArg) {
       return secondArg;
     }
 
-    expect(returnSecondArg("only give first arg")).toBe(FILL_ME_IN);
-
+    expect(returnSecondArg("only give first arg")).toBe(undefined); //함수에 없는걸 내놓으라고 하면
     function returnAllArgs() {
       var argsArray = [];
       for (var i = 0; i < arguments.length; i += 1) {
         argsArray.push(arguments[i]);
       }
-      return argsArray.join(",");
+      return argsArray.join(",");  //join() 메서드는 배열의 모든 요소를 연결해 하나의 문자열로 만듭니다
     }
 
-    expect(returnAllArgs("first", "second", "third")).toBe(FILL_ME_IN);
+    expect(returnAllArgs("first", "second", "third")).toBe("first,second,third");
   });
 
   it("함수 사용하기", function () {
@@ -80,10 +79,10 @@ describe("Functions", function() {
     };
 
     var praiseSinger = { givePraise: appendRules };
-    expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
+    expect(praiseSinger.givePraise("John")).toBe("John rules!");  //praiseSinger 객체의 givePraise 속성의 속성값(=appendRules)
 
-    praiseSinger.givePraise = appendDoubleRules;
-    expect(praiseSinger.givePraise("Mary")).toBe(FILL_ME_IN);
+    praiseSinger.givePraise = appendDoubleRules; //givePraise 속성 재 정의
+    expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules!");
 
   });
 });

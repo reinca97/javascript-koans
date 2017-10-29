@@ -8,12 +8,12 @@ describe("Objects", function () {
     });
 
     it("object는 property들을 갖고있다.", function () {
-      expect(megalomaniac.mastermind).toBe(FILL_ME_IN);
+      expect(megalomaniac.mastermind).toBe("Joker");
     });
 
     it("object property는 대소문자를 구분해야 합니다.", function () {
-      expect(megalomaniac.henchwoman).toBe(FILL_ME_IN);
-      expect(megalomaniac.henchWoman).toBe(FILL_ME_IN);
+      expect(megalomaniac.henchwoman).toBe("Harley");
+      expect(megalomaniac.henchWoman).toBe(undefined);
     });
   });
 
@@ -24,12 +24,12 @@ describe("Objects", function () {
       henchman: "Pinky",
       battleCry: function (noOfBrains) {
         return "They are " + this.henchman + " and the" +
-          Array(noOfBrains + 1).join(" " + this.mastermind);
+          Array(noOfBrains + 1).join(" " + this.mastermind); //Array().join() ???
       }
     };
 
     var battleCry = megalomaniac.battleCry(4);
-    expect(FILL_ME_IN).toMatch(battleCry);
+    expect("They are Pinky and the 5??? Brain").toMatch(battleCry);
   });
 
   it("object의 method를 사용할때는, this의 값은 해당 object입니다.", function () {
